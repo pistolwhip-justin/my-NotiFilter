@@ -39,7 +39,7 @@ android {
                 "proguard/nightly.pro",
             )
             applicationIdSuffix = ".nightly"
-            resValue("string", "app_name_launcher", "NotiFilter Nightly")
+            resValue("string", "app_name_launcher", "NotiFilter DiagnosticWTF")
         }
         release {
             isDebuggable = false
