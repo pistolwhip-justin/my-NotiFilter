@@ -24,11 +24,6 @@ jobs:
           distribution: temurin
           cache: gradle
 
-      - name: Set diagnostic version
-        run: |
-          sed -i "s/versionCode = [0-9]\\+/versionCode = $(date +'%y%j%H%M')/" app/build.gradle.kts
-          sed -i "s/versionName = \\"\\(.*\\)\\"/versionName = \\"\\1-diagnostic.$(git rev-list --count HEAD)\\"/" app/build.gradle.kts
-
       - name: Build diagnostic APK
         run: ./gradlew app:assembleNightly
 
