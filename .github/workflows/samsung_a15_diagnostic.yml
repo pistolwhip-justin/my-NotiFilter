@@ -1,0 +1,52 @@
+name: Samsung A15 diagnostic APK
+
+on:
+  push:
+    branches:
+      - diagnostic/samsung-a15-listener-persistence
+  workflow_dispatch:
+
+jobs:
+  build-diagnostic:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout diagnostic branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v6
+        with:
+          java-version: 17
+          distribution: temurin
+          cache: gradle
+
+      - name: Set diagnostic version
+        run: |
+          sed -i "s/versionCode = [0-9]\\+/versionCode = $(date +'%y%j%H%M')/" app/build.gradle.kts
+          sed -i "s/versionName = \\"\\(.*\\)\\"/versionName = \\"\\1-diagnostic.$(git rev-list --count HEAD)\\"/" app/build.gradle.kts
+
+      - name: Build diagnostic APK
+        run: ./gradlew app:assembleNightly
+
+      - name: Sign diagnostic APK
+        env:
+          KEYSTORE: ${{ secrets.SIGNING_KEY }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+        run: |
+          echo "${KEYSTORE}" | base64 -d > apksign.keystore
+          ${ANDROID_HOME}/build-tools/34.0.0/apksigner sign --ks apksign.keystore --ks-pass env:SIGNING_STORE_PASSWORD app/build/outputs/apk/nightly/app-nightly-unsigned.apk
+
+      - name: Rename APK
+        run: cp app/build/outputs/apk/nightly/app-nightly-unsigned.apk NotiFilter_DiagnosticWTF.apk
+
+      - name: Upload diagnostic APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: NotiFilter-DiagnosticWTF
+          path: NotiFilter_DiagnosticWTF.apk
+          if-no-files-found: error
+          retention-days: 14
