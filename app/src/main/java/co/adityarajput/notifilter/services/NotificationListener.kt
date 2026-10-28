@@ -458,8 +458,8 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onListenerDisconnected() {
         super.onListenerDisconnected()
-        if (instance == this) _instance = null
-        Logger.i("NotificationListener", "DIAGNOSTIC: onListenerDisconnected; instanceMatches=${instance === this}; filterCount=${filters.size}")
+        Logger.i("NotificationListener", "DIAGNOSTIC: onListenerDisconnected; instanceRegisteredBeforeClear=${_instance === this}; filterCount=${filters.size}")
+        if (_instance === this) _instance = null
     }
 
     override fun onDestroy() {
