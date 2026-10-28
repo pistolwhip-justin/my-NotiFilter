@@ -27,13 +27,15 @@ jobs:
       - name: Build diagnostic APK
         run: ./gradlew app:assembleNightly
 
-      - name: Sign diagnostic APK
-        env:
-          KEYSTORE: ${{ secrets.SIGNING_KEY }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+      - name: Create temporary diagnostic signing key
         run: |
-          echo "${KEYSTORE}" | base64 -d > apksign.keystore
-          ${ANDROID_HOME}/build-tools/34.0.0/apksigner sign --ks apksign.keystore --ks-pass env:SIGNING_STORE_PASSWORD app/build/outputs/apk/nightly/app-nightly-unsigned.apk
+          keytool -genkeypair -keystore diagnostic.keystore -storepass diagnosticpass -keypass diagnosticpass -alias diagnostic -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=NotiFilter Diagnostic"
+
+      - name: Sign diagnostic APK
+        run: |
+          BUILD_TOOLS="$(find "${ANDROID_HOME}/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          "${BUILD_TOOLS}/apksigner" sign --ks diagnostic.keystore --ks-key-alias diagnostic --ks-pass pass:diagnosticpass --key-pass pass:diagnosticpass app/build/outputs/apk/nightly/app-nightly-unsigned.apk
+          "${BUILD_TOOLS}/apksigner" verify --verbose app/build/outputs/apk/nightly/app-nightly-unsigned.apk
 
       - name: Rename APK
         run: cp app/build/outputs/apk/nightly/app-nightly-unsigned.apk NotiFilter_DiagnosticWTF.apk
