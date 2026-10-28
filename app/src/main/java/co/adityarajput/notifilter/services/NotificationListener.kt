@@ -121,16 +121,24 @@ class NotificationListener : NotificationListenerService() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        Logger.i("NotificationListener", "Service created")
+        Logger.i("NotificationListener", "DIAGNOSTIC: Service onCreate; instance assigned; package=$packageName; sdk=${Build.VERSION.SDK_INT}; manufacturer=${Build.MANUFACTURER}; model=${Build.MODEL}")
 
         if (Preferences.runInForeground)
             startForeground()
 
         serviceScope.launch {
-            notifications = repository.notifications().first()
-            repository.filters().collectLatest { newFilters ->
-                filters = newFilters
-                Logger.d("NotificationListener", "Filters updated: $filters")
+            Logger.i("NotificationListener", "DIAGNOSTIC: starting database initialization")
+            try {
+                notifications = repository.notifications().first()
+                Logger.i("NotificationListener", "DIAGNOSTIC: notifications loaded count=${notifications.size}")
+                repository.filters().collectLatest { newFilters ->
+                    filters = newFilters
+                    Logger.i("NotificationListener", "DIAGNOSTIC: filter flow emitted count=${newFilters.size}")
+                    Logger.d("NotificationListener", "Filters updated: $filters")
+                }
+            } catch (error: Throwable) {
+                Logger.e("NotificationListener", "DIAGNOSTIC: database/filter initialization failed", error)
+                throw error
             }
         }
     }
@@ -162,7 +170,7 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        Logger.i("NotificationListener", "Listener connected")
+        Logger.i("NotificationListener", "DIAGNOSTIC: onListenerConnected; instanceMatches=${instance === this}; currentFilterCount=${filters.size}")
         serviceScope.launch { TextToSpeech.initialize(this@NotificationListener) }
         requestListenerHints(0)
     }
@@ -451,10 +459,11 @@ class NotificationListener : NotificationListenerService() {
     override fun onListenerDisconnected() {
         super.onListenerDisconnected()
         if (instance == this) _instance = null
-        Logger.i("NotificationListener", "Listener disconnected")
+        Logger.i("NotificationListener", "DIAGNOSTIC: onListenerDisconnected; instanceMatches=${instance === this}; filterCount=${filters.size}")
     }
 
     override fun onDestroy() {
+        Logger.i("NotificationListener", "DIAGNOSTIC: onDestroy; instanceMatches=${_instance === this}; filterCount=${filters.size}")
         super.onDestroy()
         if (Preferences.runInForeground)
             stopForeground(STOP_FOREGROUND_REMOVE)
