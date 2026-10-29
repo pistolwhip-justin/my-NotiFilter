@@ -1,5 +1,9 @@
 name: Samsung A15 diagnostic APK
 
+concurrency:
+  group: notifilter-diagnostic-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
