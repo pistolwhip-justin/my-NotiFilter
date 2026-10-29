@@ -16,6 +16,7 @@ import androidx.core.app.NotificationCompat
 import co.adityarajput.notifilter.Constants
 import co.adityarajput.notifilter.R
 import co.adityarajput.notifilter.data.AppContainer
+import co.adityarajput.notifilter.diagnostics.DiagnosticReporter
 import co.adityarajput.notifilter.data.Cache
 import co.adityarajput.notifilter.data.models.*
 import co.adityarajput.notifilter.utils.*
@@ -121,22 +122,28 @@ class NotificationListener : NotificationListenerService() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        DiagnosticReporter.record(this, "service_create", "instance assigned")
         Logger.i("NotificationListener", "DIAGNOSTIC: Service onCreate; instance assigned; package=$packageName; sdk=${Build.VERSION.SDK_INT}; manufacturer=${Build.MANUFACTURER}; model=${Build.MODEL}")
 
         if (Preferences.runInForeground)
             startForeground()
 
         serviceScope.launch {
+            DiagnosticReporter.record(this@NotificationListener, "database_init_start")
             Logger.i("NotificationListener", "DIAGNOSTIC: starting database initialization")
             try {
                 notifications = repository.notifications().first()
+                DiagnosticReporter.record(this@NotificationListener, "notifications_loaded", "count=" + notifications.size)
+                DiagnosticReporter.record(this@NotificationListener, "database_init_success")
                 Logger.i("NotificationListener", "DIAGNOSTIC: notifications loaded count=${notifications.size}")
                 repository.filters().collectLatest { newFilters ->
                     filters = newFilters
+                    DiagnosticReporter.record(this@NotificationListener, "filters_loaded", "count=" + newFilters.size)
                     Logger.i("NotificationListener", "DIAGNOSTIC: filter flow emitted count=${newFilters.size}")
                     Logger.d("NotificationListener", "Filters updated: $filters")
                 }
             } catch (error: Throwable) {
+                DiagnosticReporter.record(this@NotificationListener, "database_init_failure", error.javaClass.simpleName + ": " + (error.message ?: "no message").replace(Regex("[/\\\\][^ ]+"), "[path]"))
                 Logger.e("NotificationListener", "DIAGNOSTIC: database/filter initialization failed", error)
                 throw error
             }
@@ -170,6 +177,7 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onListenerConnected() {
         super.onListenerConnected()
+        DiagnosticReporter.record(this, "listener_connected", "filter_count=" + filters.size)
         Logger.i("NotificationListener", "DIAGNOSTIC: onListenerConnected; instanceMatches=${instance === this}; currentFilterCount=${filters.size}")
         serviceScope.launch { TextToSpeech.initialize(this@NotificationListener) }
         requestListenerHints(0)
@@ -458,11 +466,13 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onListenerDisconnected() {
         super.onListenerDisconnected()
+        DiagnosticReporter.record(this, "listener_disconnected", "filter_count=" + filters.size)
         Logger.i("NotificationListener", "DIAGNOSTIC: onListenerDisconnected; instanceRegisteredBeforeClear=${_instance === this}; filterCount=${filters.size}")
         if (_instance === this) _instance = null
     }
 
     override fun onDestroy() {
+        DiagnosticReporter.record(this, "service_destroy", "filter_count=" + filters.size)
         Logger.i("NotificationListener", "DIAGNOSTIC: onDestroy; instanceMatches=${_instance === this}; filterCount=${filters.size}")
         super.onDestroy()
         if (Preferences.runInForeground)
