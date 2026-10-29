@@ -25,6 +25,8 @@ import androidx.compose.ui.text.font.FontWeight
 import co.adityarajput.notifilter.BuildConfig
 import co.adityarajput.notifilter.R
 import co.adityarajput.notifilter.data.AppContainer
+import co.adityarajput.notifilter.diagnostics.DiagnosticReporter
+import co.adityarajput.notifilter.diagnostics.TokenVault
 import co.adityarajput.notifilter.services.NotificationListener
 import co.adityarajput.notifilter.services.Preferences
 import co.adityarajput.notifilter.utils.Logger
@@ -34,7 +36,9 @@ import co.adityarajput.notifilter.utils.request
 import co.adityarajput.notifilter.viewmodels.AppearanceViewModel
 import co.adityarajput.notifilter.views.Brightness
 import co.adityarajput.notifilter.views.components.AppBar
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -57,6 +61,24 @@ fun SettingsScreen(
     }
     var isRunningInForeground by remember {
         mutableStateOf(Preferences.runInForeground)
+    }
+    var tokenConfigured by remember { mutableStateOf(TokenVault.hasToken(context)) }
+    var diagnosticBusy by remember { mutableStateOf(false) }
+    var diagnosticStatus by remember { mutableStateOf("") }
+    val tokenFileLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) scope.launch {
+            try {
+                val tokenText = withContext(Dispatchers.IO) {
+                    context.contentResolver.openInputStream(uri)?.bufferedReader()?.use { it.readText() }
+                        ?: throw IllegalStateException("Could not read selected file.")
+                }
+                TokenVault.save(context, tokenText)
+                tokenConfigured = true
+                diagnosticStatus = "Token imported and encrypted in app-private storage. Delete the plaintext file from Downloads."
+            } catch (e: Exception) {
+                diagnosticStatus = e.message ?: "Could not import token file."
+            }
+        }
     }
 
     val watcher = object : Runnable {
@@ -291,6 +313,61 @@ fun SettingsScreen(
                             stringResource(R.string.export_explanation),
                             style = MaterialTheme.typography.bodySmall,
                         )
+                    }
+                }
+                Card(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(R.dimen.padding_small)),
+                ) {
+                    Column(
+                        Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_large)),
+                        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
+                    ) {
+                        Text("Diagnostic report", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Medium)
+                        Text(
+                            "Imports a token file, stores the token encrypted using Android Keystore, and uploads only whitelisted service/database events. Reports go to the PUBLIC my-NotiFilter repository. Notification contents are not included.",
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        Text(if (tokenConfigured) "GitHub token: configured" else "GitHub token: not configured", style = MaterialTheme.typography.bodyMedium)
+                        OutlinedButton(
+                            onClick = { tokenFileLauncher.launch(arrayOf("text/plain", "application/octet-stream")) },
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text("Import token file") }
+                        Button(
+                            onClick = {
+                                if (!tokenConfigured) {
+                                    diagnosticStatus = "Import your edited github_token.txt file first."
+                                } else {
+                                    diagnosticBusy = true
+                                    diagnosticStatus = "Uploading sanitized diagnostic report…"
+                                    scope.launch {
+                                        try {
+                                            val result = withContext(Dispatchers.IO) {
+                                                DiagnosticReporter.upload(context, TokenVault.read(context))
+                                            }
+                                            DiagnosticReporter.record(context, "diagnostic_upload_success")
+                                            diagnosticStatus = result
+                                        } catch (e: Exception) {
+                                            DiagnosticReporter.record(context, "diagnostic_upload_failure", e.javaClass.simpleName)
+                                            diagnosticStatus = e.message ?: "Upload failed."
+                                        } finally { diagnosticBusy = false }
+                                    }
+                                }
+                            },
+                            enabled = !diagnosticBusy,
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text(if (diagnosticBusy) "Uploading…" else "Upload diagnostics") }
+                        OutlinedButton(
+                            onClick = {
+                                TokenVault.clear(context)
+                                tokenConfigured = false
+                                diagnosticStatus = "Stored token forgotten."
+                            },
+                            enabled = tokenConfigured && !diagnosticBusy,
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text("Forget token") }
+                        if (diagnosticStatus.isNotBlank()) Text(diagnosticStatus, style = MaterialTheme.typography.bodySmall)
                     }
                 }
                 Card(
