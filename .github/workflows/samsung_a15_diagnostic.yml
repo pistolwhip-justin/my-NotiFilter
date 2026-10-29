@@ -40,10 +40,27 @@ jobs:
       - name: Rename APK
         run: cp app/build/outputs/apk/nightly/app-nightly-unsigned.apk NotiFilter_DiagnosticWTF.apk
 
-      - name: Upload diagnostic APK
+      - name: Assemble phone setup package
+        run: |
+          mkdir -p diagnostic-package
+          cp NotiFilter_DiagnosticWTF.apk diagnostic-package/
+          cp diagnostics/github_token.txt diagnostic-package/
+          cp diagnostics/README-token-setup.txt diagnostic-package/
+          cd diagnostic-package
+          zip -j ../NotiFilter_Diagnostic_Package.zip *
+
+      - name: Upload installable diagnostic APK
         uses: actions/upload-artifact@v7
         with:
           name: NotiFilter-DiagnosticWTF
           path: NotiFilter_DiagnosticWTF.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload APK and token setup package
+        uses: actions/upload-artifact@v7
+        with:
+          name: NotiFilter-Diagnostic-Setup-Package
+          path: NotiFilter_Diagnostic_Package.zip
           if-no-files-found: error
           retention-days: 14
