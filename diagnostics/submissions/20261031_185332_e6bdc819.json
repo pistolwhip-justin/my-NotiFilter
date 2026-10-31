@@ -1,0 +1,218 @@
+{
+  "schema": "notifilter-diagnostic-v1",
+  "generated_at": "2026-10-31T18:53:32.376-04:00",
+  "app_version": "4.15.1",
+  "android_sdk": 36,
+  "events": [
+    {
+      "timestamp": "2026-10-31T18:12:14.485-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:14.512-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:12:14.557-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:14.558-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:12:14.573-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:14.608-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:26.322-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:26.327-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:12:26.346-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:26.347-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:12:26.353-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:26.365-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:41.898-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:41.906-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:12:41.914-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:41.960-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:12:41.961-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:12:41.967-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:25.550-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:25.559-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:13:25.582-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:25.611-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:25.615-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:13:25.636-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:50.636-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:50.750-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:13:50.761-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:50.762-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:13:50.771-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:13:50.800-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:14:02.919-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:14:02.927-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:14:02.945-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:14:02.951-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:14:02.959-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:14:02.965-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    },
+    {
+      "timestamp": "2026-10-31T18:19:00.968-04:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-10-31T18:19:00.981-04:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:19:00.988-04:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:19:01.002-04:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-10-31T18:19:01.004-04:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-10-31T18:19:01.015-04:00",
+      "event": "filters_loaded",
+      "detail": "count=1"
+    }
+  ]
+}
