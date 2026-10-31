@@ -112,6 +112,61 @@ fun SettingsScreen(
                         .fillMaxWidth()
                         .padding(dimensionResource(R.dimen.padding_small)),
                 ) {
+                    Column(
+                        Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_large)),
+                        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
+                    ) {
+                        Text("Diagnostic report", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Medium)
+                        Text(
+                            "Imports a token file, stores the token encrypted using Android Keystore, and uploads only whitelisted service/database events. Reports go to the PUBLIC my-NotiFilter repository. Notification contents are not included.",
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        Text(if (tokenConfigured) "GitHub token: configured" else "GitHub token: not configured", style = MaterialTheme.typography.bodyMedium)
+                        OutlinedButton(
+                            onClick = { tokenFileLauncher.launch(arrayOf("text/plain", "application/octet-stream")) },
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text("Import token file") }
+                        Button(
+                            onClick = {
+                                if (!tokenConfigured) {
+                                    diagnosticStatus = "Import your edited github_token.txt file first."
+                                } else {
+                                    diagnosticBusy = true
+                                    diagnosticStatus = "Uploading sanitized diagnostic report…"
+                                    scope.launch {
+                                        try {
+                                            val result = withContext(Dispatchers.IO) {
+                                                DiagnosticReporter.upload(context, TokenVault.read(context))
+                                            }
+                                            DiagnosticReporter.record(context, "diagnostic_upload_success")
+                                            diagnosticStatus = result
+                                        } catch (e: Exception) {
+                                            DiagnosticReporter.record(context, "diagnostic_upload_failure", e.javaClass.simpleName)
+                                            diagnosticStatus = e.message ?: "Upload failed."
+                                        } finally { diagnosticBusy = false }
+                                    }
+                                }
+                            },
+                            enabled = !diagnosticBusy,
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text(if (diagnosticBusy) "Uploading…" else "Upload diagnostics") }
+                        OutlinedButton(
+                            onClick = {
+                                TokenVault.clear(context)
+                                tokenConfigured = false
+                                diagnosticStatus = "Stored token forgotten."
+                            },
+                            enabled = tokenConfigured && !diagnosticBusy,
+                            modifier = Modifier.fillMaxWidth(),
+                        ) { Text("Forget token") }
+                        if (diagnosticStatus.isNotBlank()) Text(diagnosticStatus, style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+                Card(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(R.dimen.padding_small)),
+                ) {
                     Text(
                         stringResource(R.string.settings_section_1),
                         Modifier.padding(
@@ -313,61 +368,6 @@ fun SettingsScreen(
                             stringResource(R.string.export_explanation),
                             style = MaterialTheme.typography.bodySmall,
                         )
-                    }
-                }
-                Card(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(dimensionResource(R.dimen.padding_small)),
-                ) {
-                    Column(
-                        Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_large)),
-                        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
-                    ) {
-                        Text("Diagnostic report", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Medium)
-                        Text(
-                            "Imports a token file, stores the token encrypted using Android Keystore, and uploads only whitelisted service/database events. Reports go to the PUBLIC my-NotiFilter repository. Notification contents are not included.",
-                            style = MaterialTheme.typography.bodySmall,
-                        )
-                        Text(if (tokenConfigured) "GitHub token: configured" else "GitHub token: not configured", style = MaterialTheme.typography.bodyMedium)
-                        OutlinedButton(
-                            onClick = { tokenFileLauncher.launch(arrayOf("text/plain", "application/octet-stream")) },
-                            modifier = Modifier.fillMaxWidth(),
-                        ) { Text("Import token file") }
-                        Button(
-                            onClick = {
-                                if (!tokenConfigured) {
-                                    diagnosticStatus = "Import your edited github_token.txt file first."
-                                } else {
-                                    diagnosticBusy = true
-                                    diagnosticStatus = "Uploading sanitized diagnostic report…"
-                                    scope.launch {
-                                        try {
-                                            val result = withContext(Dispatchers.IO) {
-                                                DiagnosticReporter.upload(context, TokenVault.read(context))
-                                            }
-                                            DiagnosticReporter.record(context, "diagnostic_upload_success")
-                                            diagnosticStatus = result
-                                        } catch (e: Exception) {
-                                            DiagnosticReporter.record(context, "diagnostic_upload_failure", e.javaClass.simpleName)
-                                            diagnosticStatus = e.message ?: "Upload failed."
-                                        } finally { diagnosticBusy = false }
-                                    }
-                                }
-                            },
-                            enabled = !diagnosticBusy,
-                            modifier = Modifier.fillMaxWidth(),
-                        ) { Text(if (diagnosticBusy) "Uploading…" else "Upload diagnostics") }
-                        OutlinedButton(
-                            onClick = {
-                                TokenVault.clear(context)
-                                tokenConfigured = false
-                                diagnosticStatus = "Stored token forgotten."
-                            },
-                            enabled = tokenConfigured && !diagnosticBusy,
-                            modifier = Modifier.fillMaxWidth(),
-                        ) { Text("Forget token") }
-                        if (diagnosticStatus.isNotBlank()) Text(diagnosticStatus, style = MaterialTheme.typography.bodySmall)
                     }
                 }
                 Card(
