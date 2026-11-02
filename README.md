@@ -111,7 +111,7 @@ This repository tracks the upstream NotiFilter application while providing a pla
 - Default branch: `dev`
 - Upstream project: [BURG3R5/NotiFilter](https://github.com/BURG3R5/NotiFilter)
 - Diagnostic investigation: [DiagnosticWTF branch](https://github.com/pistolwhip-justin/my-NotiFilter/tree/diagnostic/samsung-a15-listener-persistence)
-- Diagnostic documentation: [DiagnosticWTF README](https://github.com/pistolwhip-justin/my-NotiFilter/blob/diagnostic/samsung-a15-listener-persistence/readme.md)
+- Diagnostic documentation: [DiagnosticWTF README](https://github.com/pistolwhip-justin/my-NotiFilter/blob/diagnostic/samsung-a15-listener-persistence/README.md)
 
 Changes should stay scoped, preserve existing filtering behavior, and include relevant tests and documentation updates. Keep diagnostic-only code and instructions out of the normal application branch unless they are deliberately approved for production.
 
