@@ -73,6 +73,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: diagnostic-v4.15.1-build-${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
           name: NotiFilter DiagnosticWTF 4.15.1 (build ${{ github.run_number }})
           prerelease: true
           make_latest: false
@@ -80,3 +81,15 @@ jobs:
           files: |
             NotiFilter_DiagnosticWTF.apk
             NotiFilter_Diagnostic_Package.zip
+
+      - name: Verify release tag matches source commit
+        env:
+          TAG_NAME: diagnostic-v4.15.1-build-${{ github.run_number }}
+        run: |
+          git fetch --force origin "refs/tags/${TAG_NAME}:refs/tags/${TAG_NAME}"
+          TAG_COMMIT="$(git rev-parse "${TAG_NAME}^{commit}")"
+          if [ "${TAG_COMMIT}" != "${GITHUB_SHA}" ]; then
+            echo "Release tag points to ${TAG_COMMIT}, expected ${GITHUB_SHA}"
+            exit 1
+          fi
+          echo "Verified release tag ${TAG_NAME} points to source commit ${GITHUB_SHA}"
