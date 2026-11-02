@@ -1,56 +1,87 @@
-<img width="192" height="192" alt="NotiFilter app icon" src="https://github.com/BURG3R5/NotiFilter/blob/dev/metadata/en-US/images/icon.png" />
+# NotiFilter DiagnosticWTF
 
-![F-Droid downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fkitswas%2Ffdroid-metrics-dashboard%2Fraw%2Frefs%2Fheads%2Fmain%2Fprocessed%2Ftotal%2Fco.adityarajput.notifilter.json&query=%24.total_downloads&logo=fdroid&style=flat-square&label=F-Droid%20downloads) ![GitHub downloads](https://img.shields.io/github/downloads/BURG3R5/NotiFilter/total?style=flat-square&logo=github&label=GitHub%20downloads)
+**A diagnostic build for investigating Android notification-listener failures.**
 
-# NotiFilter
+NotiFilter DiagnosticWTF is a diagnostic-focused Android build of NotiFilter, maintained in this fork to investigate a specific reliability problem: notification filtering eventually stops working even though the app's filters remain saved. On the affected Samsung Galaxy A15 5G, the app then reports **“Waiting for OS to initialize notification listener service”**. Force-stopping and reopening the app restores operation.
 
-**Silence annoying notifications**
+The purpose of this build is to capture enough lifecycle and processing evidence to identify why the Android notification-listener service stops functioning. **This build gathers evidence; it does not claim to fix the underlying issue or automatically recover the service.**
 
-NotiFilter listens to all device notifications and quietly manages those that match your filters.
+## Current build
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/co.adityarajput.notifilter) [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" height="80" alt="Get it at IzzyOnDroid">](https://apt.izzysoft.de/packages/co.adityarajput.notifilter) [<img src="https://github.com/user-attachments/assets/713d71c5-3dec-4ec4-a3f2-8d28d025a9c6" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/BURG3R5/NotiFilter)
+| Item | Value |
+|---|---|
+| App name | NotiFilter DiagnosticWTF |
+| App version | 4.15.1 |
+| Android package | `co.adityarajput.notifilter` |
+| Minimum Android version | Android 10 (API 29) |
+| Target SDK | 36 |
+| Development branch | `diagnostic/samsung-a15-listener-persistence` |
+| Primary test device | Samsung Galaxy A15 5G (SM-A156U) |
 
-## Screenshots
+This is a test build, not a production release. The APK was built successfully by GitHub Actions. Installation and long-duration behavior still require validation on the target device.
 
-<img alt="NotiFilter screenshot: filters screen" src="https://github.com/BURG3R5/NotiFilter/blob/dev/metadata/en-US/images/phoneScreenshots/1.png" width=30%> <img alt="NotiFilter screenshot: block history" src="https://github.com/BURG3R5/NotiFilter/blob/dev/metadata/en-US/images/phoneScreenshots/2.png" width=30%>
+## What this build monitors
 
-## Features
+- **Notification-listener lifecycle** — service creation and destruction, listener connection and disconnection, and unbind/rebind events.
+- **Service state** — periodic snapshots of the app's view of listener state, including whether the listener instance is present and connected.
+- **Processing continuity** — notification callback counters, recorded without capturing notification content.
+- **Process health** — process uptime and periodic service heartbeats.
+- **Listener permission state** — whether Android reports notification-listener access as granted.
+- **Filter/database initialization** — diagnostic events retained from the earlier diagnostic build to help identify startup-ordering problems.
 
-- **Filters** - Use [regex](https://github.com/BURG3R5/NotiFilter/wiki/Examples) to precisely target
-  annoying notifications from
-  each app 🎯
-- **Actions** - Choose what to do with the filtered notifications ⚙
-    1. Dismiss it 🚫
-    2. Tap it ✅
-    3. Tap a button 🔽️
-    4. Delay it ⏳
-    5. Collect into batches 📦
-    6. Debounce it ❄
-    7. Mute it 🔇
-    8. Play an alert 🔔
-    9. Disable DND mode 🔊
-    10. Remove after a delay ⏲️
-    11. Replace with a custom notification 📝
-    12. Read it aloud 🗣
-- **Schedule** - Choose when filters run (e.g. only during work hours) and how often (i.e. apply a
-  filter-level cooldown) ⏰
-- **History** - Recently dismissed notifications are stored locally, for reference and retrieval 🧾
-- **Widget** - Configure filters to send notifications to a home screen widget 📱
-- **Export/Import** - Backup or transfer your filters as JSON files 📂
-- **Free, open-source & private**
-    - No ads, subscriptions, or in-app purchases 🆓
-    - Licensed under the [GPLv3](https://github.com/BURG3R5/notifilter/blob/dev/LICENSE) 📃
-    - Fully offline; your data never leaves your device 🔐
-- **Lightweight** - Runs in the background with minimal battery and memory usage ⏩
+The instrumentation is intended to distinguish among an Android listener disconnect, a service/process lifecycle event, a stale in-app service state, and a service that remains connected but stops receiving callbacks.
 
-## Usage
+## Privacy
 
-Refer to the [wiki](https://github.com/BURG3R5/NotiFilter/wiki) for instructions, examples, tips,
-and FAQs.
+Diagnostic events are limited to technical state and timestamps needed for this investigation.
 
-## Verification
+- Notification text, titles, contents, and other notification payloads are **not** recorded.
+- The diagnostic callback counter records counts, not notification details.
+- The report does not collect installed-app lists or device identifiers.
+- A GitHub token is not embedded in the APK or diagnostic report.
+- The token is stored locally using Android Keystore encryption after import.
 
-Package ID: `co.adityarajput.notifilter`
+The report is uploaded only when the user explicitly requests an upload. The repository's [privacy notes](privacy.md) describe the underlying app's data handling; this diagnostic build adds the explicitly described diagnostic events and optional user-initiated report upload.
 
-SHA256 hash of signing certificate:
-`56:0A:30:9B:4F:01:AC:3D:28:65:EA:C6:E3:C3:35:59:EC:C7:E9:AD:8E:A7:9E:CD:58:D2:56:B4:B6:45:8A:0E`
+## Install and configure
+
+1. Download the **NotiFilter DiagnosticWTF** APK from the [GitHub Actions build](https://github.com/pistolwhip-justin/my-NotiFilter/actions/runs/41386837337).
+2. If an earlier DiagnosticWTF build is installed, uninstall that diagnostic build before installing this one. This build uses a different signing identity. Your separate production NotiFilter installation can remain installed.
+3. Install the APK and grant notification access when Android requests it.
+4. Create a fine-grained GitHub personal access token at [GitHub token settings](https://github.com/settings/personal-access-tokens/new):
+   - Resource owner: `pistolwhip-justin`
+   - Repository access: only `my-NotiFilter`
+   - Repository permission: **Contents — Read and write**
+5. Save the token by itself in a file named `github_token.txt`. In the app, open **Settings → Diagnostic report → Import token file** and select that file.
+6. Delete the plaintext token file from Downloads after importing it. Do not share the token in an issue, report, or chat.
+
+The app stores the imported token encrypted using Android Keystore. The token is used only when you explicitly upload a diagnostic report.
+
+## Reproduce and submit the issue
+
+1. Confirm that DiagnosticWTF has notification access.
+2. Use the phone normally and allow time for the notification-filtering failure to occur.
+3. When the app stops processing notifications and displays **“Waiting for OS to initialize notification listener service”**, avoid force-stopping or reopening it before collecting the report. Doing so may erase the failed-state evidence this build is intended to capture.
+4. Open **Settings → Diagnostic report → Upload diagnostics**.
+5. Confirm that the report appears in the [diagnostic submissions folder](diagnostics/submissions/).
+
+Reports are stored in this repository's `diagnostics/submissions/` directory. Review each report before sharing it elsewhere.
+
+After testing, you can use **Forget token** in the app and revoke the fine-grained token in [GitHub token settings](https://github.com/settings/personal-access-tokens).
+
+## What is not included
+
+- No speculative listener-restart or recovery mechanism.
+- No claim that the underlying Android/Samsung lifecycle issue has been fixed.
+- No notification-content logging.
+- No changes intended to alter the original filter rules or notification actions.
+
+The next development step is to analyze a report captured while the listener is in the failed state, identify the supported cause from the evidence, and then decide on a narrowly scoped corrective change.
+
+## Build and source
+
+- Source code and diagnostic changes: [this repository](https://github.com/pistolwhip-justin/my-NotiFilter/tree/diagnostic/samsung-a15-listener-persistence)
+- Build workflow: [GitHub Actions run #41386837337](https://github.com/pistolwhip-justin/my-NotiFilter/actions/runs/41386837337)
+- Diagnostic reports: [submissions](https://github.com/pistolwhip-justin/my-NotiFilter/tree/diagnostic/samsung-a15-listener-persistence/diagnostics/submissions)
+
+This repository is a fork of [BURG3R5/NotiFilter](https://github.com/BURG3R5/NotiFilter). The upstream project provides the original notification-filtering application; this fork's current development focus is the DiagnosticWTF instrumentation and investigation documented above.
