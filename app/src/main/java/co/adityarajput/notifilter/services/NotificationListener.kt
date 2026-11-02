@@ -5,7 +5,6 @@ import android.app.Notification.FLAG_GROUP_SUMMARY
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
-import android.content.ComponentName
 import android.content.pm.ApplicationInfo
 import android.media.AudioManager
 import android.os.Build
@@ -496,18 +495,17 @@ class NotificationListener : NotificationListenerService() {
         if (_instance === this) _instance = null
     }
 
-    override fun onBindingDied(name: ComponentName) {
+    override fun onUnbind(intent: Intent): Boolean {
         listenerConnected = false
-        DiagnosticReporter.record(this, "binding_died", "component=" + name.className)
-        recordListenerState("binding_died")
-        super.onBindingDied(name)
+        DiagnosticReporter.record(this, "listener_disconnected", "service unbind; filter_count=" + filters.size)
+        recordListenerState("service_unbind")
+        return super.onUnbind(intent)
     }
 
-    override fun onNullBinding(name: ComponentName) {
-        listenerConnected = false
-        DiagnosticReporter.record(this, "null_binding", "component=" + name.className)
-        recordListenerState("null_binding")
-        super.onNullBinding(name)
+    override fun onRebind(intent: Intent) {
+        super.onRebind(intent)
+        DiagnosticReporter.record(this, "listener_connected", "service rebind; filter_count=" + filters.size)
+        recordListenerState("service_rebind")
     }
 
     override fun onDestroy() {
