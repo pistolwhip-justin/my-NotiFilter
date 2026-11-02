@@ -45,7 +45,7 @@ The report is uploaded only when the user explicitly requests an upload. The rep
 
 ## Install and configure
 
-1. Download the **NotiFilter DiagnosticWTF** APK from the [GitHub Actions build](https://github.com/pistolwhip-justin/my-NotiFilter/actions/runs/41386837337).
+1. Download the **NotiFilter DiagnosticWTF** APK from the repository's [GitHub Releases page](https://github.com/pistolwhip-justin/my-NotiFilter/releases). The APK and complete setup package are attached to each diagnostic release. Do not use the temporary Actions artifacts when a release asset is available.
 2. If an earlier DiagnosticWTF build is installed, uninstall that diagnostic build before installing this one. This build uses a different signing identity. Your separate production NotiFilter installation can remain installed.
 3. Install the APK and grant notification access when Android requests it.
 4. Create a fine-grained GitHub personal access token at [GitHub token settings](https://github.com/settings/personal-access-tokens/new):
@@ -81,7 +81,8 @@ The next development step is to analyze a report captured while the listener is 
 ## Build and source
 
 - Source code and diagnostic changes: [this repository](https://github.com/pistolwhip-justin/my-NotiFilter/tree/diagnostic/samsung-a15-listener-persistence)
-- Build workflow: [GitHub Actions run #41386837337](https://github.com/pistolwhip-justin/my-NotiFilter/actions/runs/41386837337)
+- Installable APKs: [GitHub Releases](https://github.com/pistolwhip-justin/my-NotiFilter/releases)
+- Build workflow: [Samsung A15 diagnostic APK](https://github.com/pistolwhip-justin/my-NotiFilter/actions/workflows/samsung_a15_diagnostic.yml)
 - Diagnostic reports: [submissions](https://github.com/pistolwhip-justin/my-NotiFilter/tree/diagnostic/samsung-a15-listener-persistence/diagnostics/submissions)
 
 This repository is a fork of [BURG3R5/NotiFilter](https://github.com/BURG3R5/NotiFilter). The upstream project provides the original notification-filtering application; this fork's current development focus is the DiagnosticWTF instrumentation and investigation documented above.
