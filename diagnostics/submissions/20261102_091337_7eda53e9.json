@@ -1,0 +1,1213 @@
+{
+  "schema": "notifilter-diagnostic-v2",
+  "generated_at": "2026-11-02T09:13:37.296-05:00",
+  "app_version": "4.15.1",
+  "android_sdk": 36,
+  "events": [
+    {
+      "timestamp": "2026-11-02T01:12:21.421-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=194498541"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.423-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.425-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=194498545"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.429-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.437-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.439-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=194498559"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.460-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.462-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:12:21.486-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:23.857-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:28.938-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=194506058"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:28.943-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:28.945-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=194506065"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:28.949-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:12:28.989-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:28.996-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:12:29.009-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:29.496-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:29.500-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=194506619"
+    },
+    {
+      "timestamp": "2026-11-02T01:12:34.414-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.837-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=195135955"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.845-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.852-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195135971"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.859-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.877-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.883-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195136003"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.893-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.897-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:22:58.915-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:27:58.863-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195435982"
+    },
+    {
+      "timestamp": "2026-11-02T01:32:58.874-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195735993"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.166-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=195931285"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.186-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.192-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195931311"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.200-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.234-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.240-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195931360"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.262-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.277-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:36:14.340-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.509-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=195942627"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.518-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.525-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195942644"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.532-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.549-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.555-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=195942674"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.559-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.564-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:36:25.585-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:41:25.536-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=196242655"
+    },
+    {
+      "timestamp": "2026-11-02T01:46:25.549-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=196542667"
+    },
+    {
+      "timestamp": "2026-11-02T01:51:25.562-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=196842680"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.688-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=197002806"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.706-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.712-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=197002831"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.733-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.769-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.774-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.792-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.799-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=197002918"
+    },
+    {
+      "timestamp": "2026-11-02T01:54:05.806-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T01:59:05.754-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=197302857"
+    },
+    {
+      "timestamp": "2026-11-02T02:04:05.777-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=197602896"
+    },
+    {
+      "timestamp": "2026-11-02T02:09:05.790-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=197902908"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:14.099-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=198091218"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:14.149-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:14.172-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=198091292"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:14.198-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T02:12:14.285-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:14.294-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=198091413"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.025-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=198102143"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.061-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.068-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=198102187"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.076-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.098-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.105-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=198102224"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.110-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.115-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T02:12:25.139-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T02:17:25.080-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=198402199"
+    },
+    {
+      "timestamp": "2026-11-02T02:22:25.095-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=198702214"
+    },
+    {
+      "timestamp": "2026-11-02T02:27:25.106-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=199002226"
+    },
+    {
+      "timestamp": "2026-11-02T02:32:25.119-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=199302238"
+    },
+    {
+      "timestamp": "2026-11-02T02:37:25.133-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=199602252"
+    },
+    {
+      "timestamp": "2026-11-02T02:42:25.148-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=199902267"
+    },
+    {
+      "timestamp": "2026-11-02T02:47:25.160-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=200202279"
+    },
+    {
+      "timestamp": "2026-11-02T02:52:25.172-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=200502291"
+    },
+    {
+      "timestamp": "2026-11-02T02:57:25.183-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=200802302"
+    },
+    {
+      "timestamp": "2026-11-02T03:02:25.196-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201102314"
+    },
+    {
+      "timestamp": "2026-11-02T03:07:25.207-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201402326"
+    },
+    {
+      "timestamp": "2026-11-02T03:12:25.219-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201702338"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:00.998-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=201918116"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.152-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.160-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201918279"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.174-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.274-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.353-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201918470"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.738-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:01.796-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T03:16:13.804-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=201930921"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:13.839-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:13.906-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201931026"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:13.945-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T03:16:14.033-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:14.059-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=201931178"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:14.234-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T03:16:14.246-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T03:16:14.673-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T03:21:13.955-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=202231068"
+    },
+    {
+      "timestamp": "2026-11-02T03:26:13.979-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=202531098"
+    },
+    {
+      "timestamp": "2026-11-02T03:31:13.992-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=202831110"
+    },
+    {
+      "timestamp": "2026-11-02T03:36:14.004-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=203131123"
+    },
+    {
+      "timestamp": "2026-11-02T03:41:14.017-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=203431136"
+    },
+    {
+      "timestamp": "2026-11-02T03:46:14.033-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=203731150"
+    },
+    {
+      "timestamp": "2026-11-02T03:51:14.046-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=204031165"
+    },
+    {
+      "timestamp": "2026-11-02T03:56:14.059-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=204331178"
+    },
+    {
+      "timestamp": "2026-11-02T04:01:14.072-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=204631191"
+    },
+    {
+      "timestamp": "2026-11-02T04:06:14.088-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=204931206"
+    },
+    {
+      "timestamp": "2026-11-02T04:11:14.104-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=205231222"
+    },
+    {
+      "timestamp": "2026-11-02T04:16:14.120-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=205531238"
+    },
+    {
+      "timestamp": "2026-11-02T04:19:53.749-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:21:14.137-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=1; process_uptime_ms=205831252"
+    },
+    {
+      "timestamp": "2026-11-02T04:26:14.152-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=1; process_uptime_ms=206131271"
+    },
+    {
+      "timestamp": "2026-11-02T04:31:14.166-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=1; process_uptime_ms=206431285"
+    },
+    {
+      "timestamp": "2026-11-02T04:36:14.180-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=1; process_uptime_ms=206731300"
+    },
+    {
+      "timestamp": "2026-11-02T04:41:14.194-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=1; process_uptime_ms=207031312"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:19.011-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207336130"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:19.057-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:19.114-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207336233"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:19.136-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:46:20.181-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:20.191-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:46:20.715-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:25.623-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:25.681-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207342756"
+    },
+    {
+      "timestamp": "2026-11-02T04:46:27.232-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.187-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207381305"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.601-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.832-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207381951"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.853-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.909-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.921-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:47:04.988-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:05.295-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:05.363-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207382482"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.117-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207400140"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.244-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.399-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207400518"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.445-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.486-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.494-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:47:23.570-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.454-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207444572"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.485-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.499-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207444618"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.517-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.610-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.628-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.670-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.715-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207444834"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:07.741-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.313-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207461431"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.333-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.406-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207461506"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.529-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.610-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.621-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.662-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.730-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:24.762-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207461851"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.312-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207473430"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.339-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.421-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207473528"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.724-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.878-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.886-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.929-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:36.952-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207474069"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:37.000-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.465-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=207486583"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.522-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.591-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207486709"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.605-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.744-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.775-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.781-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.814-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=207486908"
+    },
+    {
+      "timestamp": "2026-11-02T04:48:49.971-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T04:49:19.452-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T04:51:26.049-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=10; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T06:49:30.195-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=18; process_uptime_ms=214727305"
+    },
+    {
+      "timestamp": "2026-11-02T07:52:27.502-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=20; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:00.865-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=218537983"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:00.926-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:00.959-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218538079"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:00.980-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:53:01.033-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:01.068-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218538188"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:01.262-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:01.268-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:53:01.311-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.535-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=218551655"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.552-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.593-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218551712"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.614-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.636-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.639-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218551759"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.728-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.730-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:53:14.739-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:15.892-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.667-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=218570785"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.686-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.692-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218570812"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.697-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.717-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.724-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.761-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.771-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:53:33.777-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218570897"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:01.930-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=218599050"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:01.939-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:01.983-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218599102"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:02.052-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:54:02.078-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:02.084-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218599203"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:02.123-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:54:02.146-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:54:02.177-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.852-05:00",
+      "event": "process_started",
+      "detail": "service onCreate; process uptime_ms=218702971"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.867-05:00",
+      "event": "service_create",
+      "detail": "instance assigned"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.872-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=service_create; listener_connected=false; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218702992"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.878-05:00",
+      "event": "database_init_start",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.903-05:00",
+      "event": "notifications_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.906-05:00",
+      "event": "database_init_success",
+      "detail": ""
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.916-05:00",
+      "event": "listener_connected",
+      "detail": "filter_count=0; instance_matches=true"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.918-05:00",
+      "event": "listener_state_snapshot",
+      "detail": "reason=listener_connected; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=0; process_uptime_ms=218703038"
+    },
+    {
+      "timestamp": "2026-11-02T07:55:45.926-05:00",
+      "event": "filters_loaded",
+      "detail": "count=0"
+    },
+    {
+      "timestamp": "2026-11-02T07:57:28.405-05:00",
+      "event": "notification_callback_sample",
+      "detail": "callback_count=1; instance_matches=true; connected=true"
+    },
+    {
+      "timestamp": "2026-11-02T08:00:45.915-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=2; process_uptime_ms=219003026"
+    },
+    {
+      "timestamp": "2026-11-02T08:05:45.955-05:00",
+      "event": "service_heartbeat",
+      "detail": "reason=five_minute_heartbeat; listener_connected=true; instance_matches=true; listener_access_granted=true; filter_count=0; notification_callbacks=3; process_uptime_ms=219303069"
+    }
+  ]
+}
