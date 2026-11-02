@@ -523,7 +523,7 @@ class NotificationListener : NotificationListenerService() {
     private fun recordListenerState(reason: String) {
         val accessGranted = try {
             notificationManager.isNotificationListenerAccessGranted(
-                ComponentName(this, NotificationListener::class.java),
+                android.content.ComponentName(this, NotificationListener::class.java),
             )
         } catch (_: Throwable) {
             false
