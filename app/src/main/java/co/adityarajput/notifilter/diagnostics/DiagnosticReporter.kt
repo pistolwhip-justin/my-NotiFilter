@@ -27,7 +27,9 @@ object DiagnosticReporter {
             "service_create", "database_init_start", "database_init_success",
             "notifications_loaded", "filters_loaded", "listener_connected",
             "listener_disconnected", "service_destroy", "database_init_failure",
-            "diagnostic_upload_success", "diagnostic_upload_failure"
+            "diagnostic_upload_success", "diagnostic_upload_failure", "process_started", "listener_state_snapshot",
+            "service_heartbeat", "notification_callback_sample", "binding_died", "null_binding",
+            "listener_removed_callback", "listener_hints_failure"
         )
         if (event !in allowed) return
         val safeDetail = detail.filter { it == '\n' || it == '\t' || it >= ' ' }
@@ -53,7 +55,7 @@ object DiagnosticReporter {
             }
         } catch (_: Exception) { }
         return JSONObject()
-            .put("schema", "notifilter-diagnostic-v1")
+            .put("schema", "notifilter-diagnostic-v2")
             .put("generated_at", timestamp())
             .put("app_version", co.adityarajput.notifilter.BuildConfig.VERSION_NAME)
             .put("android_sdk", Build.VERSION.SDK_INT)
