@@ -88,7 +88,7 @@ my-NotiFilter/
 ├── metadata/        # Store metadata, icons, and screenshots
 ├── gradle/          # Gradle wrapper configuration
 ├── privacy.md       # Application privacy notes
-├── readme.md        # Legacy filename; see README.md
+├── README.md        # Project overview, setup, and development guide
 └── settings.gradle.kts
 ```
 
