@@ -5,9 +5,11 @@ import android.app.Notification.FLAG_GROUP_SUMMARY
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
+import android.content.ComponentName
 import android.content.pm.ApplicationInfo
 import android.media.AudioManager
 import android.os.Build
+import android.os.SystemClock
 import android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM
 import android.provider.Settings
 import android.service.notification.NotificationListenerService
@@ -114,6 +116,12 @@ class NotificationListener : NotificationListenerService() {
     private var filters: List<Filter> = emptyList()
 
     @Volatile
+    private var listenerConnected = false
+
+    @Volatile
+    private var notificationCallbackCount = 0L
+
+    @Volatile
     private var notifications: List<Notification> = emptyList()
 
     @Volatile
@@ -122,11 +130,20 @@ class NotificationListener : NotificationListenerService() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        DiagnosticReporter.record(this, "process_started", "service onCreate; process uptime_ms=" + SystemClock.elapsedRealtime())
         DiagnosticReporter.record(this, "service_create", "instance assigned")
+        recordListenerState("service_create")
         Logger.i("NotificationListener", "DIAGNOSTIC: Service onCreate; instance assigned; package=$packageName; sdk=${Build.VERSION.SDK_INT}; manufacturer=${Build.MANUFACTURER}; model=${Build.MODEL}")
 
         if (Preferences.runInForeground)
             startForeground()
+
+        serviceScope.launch {
+            while (isActive) {
+                delay(5 * 60 * 1000L)
+                recordListenerState("five_minute_heartbeat")
+            }
+        }
 
         serviceScope.launch {
             DiagnosticReporter.record(this@NotificationListener, "database_init_start")
@@ -177,13 +194,19 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        DiagnosticReporter.record(this, "listener_connected", "filter_count=" + filters.size)
+        listenerConnected = true
+        DiagnosticReporter.record(this, "listener_connected", "filter_count=" + filters.size + "; instance_matches=" + (instance === this))
+        recordListenerState("listener_connected")
         Logger.i("NotificationListener", "DIAGNOSTIC: onListenerConnected; instanceMatches=${instance === this}; currentFilterCount=${filters.size}")
         serviceScope.launch { TextToSpeech.initialize(this@NotificationListener) }
         requestListenerHints(0)
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
+        notificationCallbackCount += 1
+        if (notificationCallbackCount == 1L || notificationCallbackCount % 10L == 0L) {
+            DiagnosticReporter.record(this, "notification_callback_sample", "callback_count=" + notificationCallbackCount + "; instance_matches=" + (_instance === this) + "; connected=" + listenerConnected)
+        }
         if (sbn.notification.flags and FLAG_GROUP_SUMMARY != 0) {
             Logger.d(
                 "NotificationListener",
@@ -466,17 +489,57 @@ class NotificationListener : NotificationListenerService() {
 
     override fun onListenerDisconnected() {
         super.onListenerDisconnected()
+        listenerConnected = false
         DiagnosticReporter.record(this, "listener_disconnected", "filter_count=" + filters.size)
         Logger.i("NotificationListener", "DIAGNOSTIC: onListenerDisconnected; instanceRegisteredBeforeClear=${_instance === this}; filterCount=${filters.size}")
+        recordListenerState("listener_disconnected")
         if (_instance === this) _instance = null
     }
 
+    override fun onBindingDied(name: ComponentName) {
+        listenerConnected = false
+        DiagnosticReporter.record(this, "binding_died", "component=" + name.className)
+        recordListenerState("binding_died")
+        super.onBindingDied(name)
+    }
+
+    override fun onNullBinding(name: ComponentName) {
+        listenerConnected = false
+        DiagnosticReporter.record(this, "null_binding", "component=" + name.className)
+        recordListenerState("null_binding")
+        super.onNullBinding(name)
+    }
+
     override fun onDestroy() {
-        DiagnosticReporter.record(this, "service_destroy", "filter_count=" + filters.size)
+        listenerConnected = false
+        DiagnosticReporter.record(this, "service_destroy", "filter_count=" + filters.size + "; callbacks=" + notificationCallbackCount)
+        recordListenerState("service_destroy")
         Logger.i("NotificationListener", "DIAGNOSTIC: onDestroy; instanceMatches=${_instance === this}; filterCount=${filters.size}")
         super.onDestroy()
         if (Preferences.runInForeground)
             stopForeground(STOP_FOREGROUND_REMOVE)
         serviceJob.cancel()
+    }
+
+    /** Records only boolean service/permission state and counters; never notification contents. */
+    private fun recordListenerState(reason: String) {
+        val accessGranted = try {
+            notificationManager.isNotificationListenerAccessGranted(
+                ComponentName(this, NotificationListener::class.java),
+            )
+        } catch (_: Throwable) {
+            false
+        }
+        DiagnosticReporter.record(
+            this,
+            if (reason == "five_minute_heartbeat") "service_heartbeat" else "listener_state_snapshot",
+            "reason=" + reason +
+                "; listener_connected=" + listenerConnected +
+                "; instance_matches=" + (_instance === this) +
+                "; listener_access_granted=" + accessGranted +
+                "; filter_count=" + filters.size +
+                "; notification_callbacks=" + notificationCallbackCount +
+                "; process_uptime_ms=" + SystemClock.elapsedRealtime(),
+        )
     }
 }
